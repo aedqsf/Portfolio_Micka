@@ -1,0 +1,22 @@
+# Systeme
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Editeurs
+.vscode/
+.idea/
+*.swp
+*~
+
+# Fichiers de travail
+*.log
+.cache/
+node_modules/
+
+# Originaux lourds : garde-les hors du depot, publie des versions compressees
+assets/img/raw/
+
+# Config locale de l outil de preview
+.claude/

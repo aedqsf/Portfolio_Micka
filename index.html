@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ============================================================
+     A PERSONNALISER : titre, description, nom du site
+     ============================================================ -->
+<title>Micka — Musicien</title>
+<meta name="description" content="Portfolio officiel de Micka, musicien : parcours, vidéos, concerts et contact booking.">
+<meta name="author" content="Micka">
+<meta name="theme-color" content="#0a0a0b">
+
+<!-- Aperçu lors du partage sur les réseaux sociaux -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Micka — Musicien">
+<meta property="og:description" content="Portfolio officiel : parcours, vidéos, concerts et contact booking.">
+<meta property="og:image" content="assets/img/og-cover.svg">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<!-- ===================== NAVIGATION ===================== -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="#accueil">MICKA</a>
+
+    <button class="nav__burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav__menu" id="menu" aria-label="Navigation principale">
+      <a href="#parcours">Parcours</a>
+      <a href="#videos">Vidéos</a>
+      <a href="#concerts">Concerts</a>
+      <a href="#photos">Photos</a>
+      <a href="#contact" class="nav__cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="accueil">
+  <div class="hero__media">
+    <!-- A REMPLACER par ta photo : mets hero.jpg dans assets/img/ et change le src -->
+    <img src="assets/img/hero.svg" alt="" aria-hidden="true">
+  </div>
+
+  <div class="hero__content">
+    <p class="hero__eyebrow">Musicien · Compositeur · Interprète</p>
+    <h1 class="hero__title">Micka</h1>
+    <p class="hero__tagline">
+      <!-- A REMPLACER : ta phrase d'accroche, une seule ligne -->
+      Une écriture entre ombre et lumière, façonnée sur scène.
+    </p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="#videos">Voir les vidéos</a>
+      <a class="btn btn--ghost" href="#contact">Booking &amp; contact</a>
+    </div>
+  </div>
+
+  <a class="hero__scroll" href="#parcours" aria-label="Descendre"><span></span></a>
+</section>
+
+<!-- ===================== PARCOURS / CV ===================== -->
+<section class="section" id="parcours">
+  <div class="wrap">
+    <header class="section__head reveal">
+      <p class="section__label">01 — Parcours</p>
+      <h2 class="section__title">Le chemin jusqu'ici</h2>
+    </header>
+
+    <div class="cv">
+
+      <!-- Colonne gauche : portrait, bio, compétences -->
+      <aside class="cv__side reveal">
+        <div class="cv__portrait">
+          <!-- A REMPLACER par ton portrait -->
+          <img src="assets/img/portrait.svg" alt="Portrait de Micka">
+        </div>
+
+        <div class="cv__block">
+          <h3>Bio</h3>
+          <p>
+            <!-- A REMPLACER : 3 à 5 phrases. D'où tu viens, ce que tu joues, ce qui te distingue. -->
+            Musicien formé à la scène autant qu'au conservatoire, je construis
+            depuis dix ans un langage à la croisée de l'acoustique et de
+            l'électronique. De la salle de club au plateau de théâtre, je
+            travaille la matière sonore comme une image : par contrastes.
+          </p>
+        </div>
+
+        <div class="cv__block">
+          <h3>Instruments</h3>
+          <!-- A REMPLACER : tes instruments -->
+          <ul class="tags">
+            <li>Guitare</li>
+            <li>Basse</li>
+            <li>Piano / Clavier</li>
+            <li>Chant</li>
+            <li>Machines &amp; MAO</li>
+          </ul>
+        </div>
+
+        <div class="cv__block">
+          <h3>Compétences</h3>
+          <!-- A REMPLACER : tes compétences -->
+          <ul class="tags">
+            <li>Composition</li>
+            <li>Arrangement</li>
+            <li>Direction artistique</li>
+            <li>Enregistrement studio</li>
+            <li>Mixage</li>
+            <li>Musique à l'image</li>
+          </ul>
+        </div>
+
+        <!-- Mets ton CV PDF dans assets/ sous le nom cv-micka.pdf pour activer ce bouton -->
+        <a class="btn btn--ghost btn--full" href="assets/cv-micka.pdf" download>Télécharger le CV (PDF)</a>
+      </aside>
+
+      <!-- Colonne droite : timelines -->
+      <div class="cv__main">
+
+        <h3 class="cv__heading reveal">Expériences</h3>
+        <ol class="timeline">
+          <!-- POUR AJOUTER UNE LIGNE : duplique un <li> entier et modifie le contenu. -->
+          <li class="timeline__item reveal">
+            <div class="timeline__date">2022 — aujourd'hui</div>
+            <div class="timeline__body">
+              <h4>Projet solo — « Nom du projet »</h4>
+              <p class="timeline__role">Auteur, compositeur, interprète</p>
+              <p>Écriture et production d'un premier album. Plus de 60 dates en France et en Belgique.</p>
+            </div>
+          </li>
+
+          <li class="timeline__item reveal">
+            <div class="timeline__date">2019 — 2022</div>
+            <div class="timeline__body">
+              <h4>Musicien de scène — Nom de l'artiste</h4>
+              <p class="timeline__role">Guitare &amp; claviers</p>
+              <p>Tournée nationale, festivals, sessions live en radio.</p>
+            </div>
+          </li>
+
+          <li class="timeline__item reveal">
+            <div class="timeline__date">2017 — 2019</div>
+            <div class="timeline__body">
+              <h4>Compositeur — Musique à l'image</h4>
+              <p class="timeline__role">Courts-métrages &amp; documentaires</p>
+              <p>Création de bandes originales pour la production audiovisuelle indépendante.</p>
+            </div>
+          </li>
+        </ol>
+
+        <h3 class="cv__heading reveal">Formation</h3>
+        <ol class="timeline">
+          <li class="timeline__item reveal">
+            <div class="timeline__date">2014 — 2017</div>
+            <div class="timeline__body">
+              <h4>Conservatoire — Nom de la ville</h4>
+              <p class="timeline__role">Diplôme d'études musicales</p>
+            </div>
+          </li>
+          <li class="timeline__item reveal">
+            <div class="timeline__date">2013</div>
+            <div class="timeline__body">
+              <h4>Formation MAO &amp; production</h4>
+              <p class="timeline__role">Home-studio, mixage, arrangement</p>
+            </div>
+          </li>
+        </ol>
+
+        <h3 class="cv__heading reveal">Collaborations &amp; références</h3>
+        <ul class="refs reveal">
+          <!-- A REMPLACER : artistes, salles, labels, festivals, compagnies -->
+          <li>Artiste A</li>
+          <li>Festival B</li>
+          <li>Label C</li>
+          <li>Salle D</li>
+          <li>Compagnie E</li>
+          <li>Studio F</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VIDÉOS ===================== -->
+<section class="section section--alt" id="videos">
+  <div class="wrap">
+    <header class="section__head reveal">
+      <p class="section__label">02 — Vidéos</p>
+      <h2 class="section__title">Clips &amp; captations live</h2>
+    </header>
+
+    <!--
+      POUR AJOUTER UNE VIDÉO YOUTUBE :
+      1. Ouvre la vidéo. Dans l'URL youtube.com/watch?v=XXXXXXXXXXX, l'ID est XXXXXXXXXXX
+      2. Duplique un bloc <article> ci-dessous, remplace data-yt et le titre.
+      La miniature se charge toute seule. La vidéo ne se charge qu'au clic :
+      le site reste rapide et YouTube ne dépose aucun cookie avant.
+    -->
+    <div class="videos" id="videos-grid">
+      <article class="video reveal" data-yt="dQw4w9WgXcQ">
+        <button class="video__play" aria-label="Lire la vidéo : Titre du clip"></button>
+        <div class="video__meta">
+          <h3>Titre du clip</h3>
+          <p>Clip officiel · 2024</p>
+        </div>
+      </article>
+
+      <article class="video reveal" data-yt="9bZkp7q19f0">
+        <button class="video__play" aria-label="Lire la vidéo : Live au festival"></button>
+        <div class="video__meta">
+          <h3>Live au festival</h3>
+          <p>Captation live · 2023</p>
+        </div>
+      </article>
+
+      <article class="video reveal" data-yt="kJQP7kiw5Fk">
+        <button class="video__play" aria-label="Lire la vidéo : Session acoustique"></button>
+        <div class="video__meta">
+          <h3>Session acoustique</h3>
+          <p>Session studio · 2023</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONCERTS ===================== -->
+<section class="section" id="concerts">
+  <div class="wrap">
+    <header class="section__head reveal">
+      <p class="section__label">03 — Concerts</p>
+      <h2 class="section__title">Sur scène</h2>
+    </header>
+
+    <div class="dates__filters reveal">
+      <button class="chip is-active" data-filter="upcoming" aria-pressed="true">À venir</button>
+      <button class="chip" data-filter="past" aria-pressed="false">Passés</button>
+    </div>
+
+    <!--
+      POUR AJOUTER UNE DATE : duplique un <li> et modifie-le.
+      data-date DOIT être au format AAAA-MM-JJ.
+      Le site trie et classe automatiquement en « À venir » ou « Passés »
+      selon la date du jour : tu n'as rien d'autre à faire.
+      Sans billetterie, laisse simplement <div class="date__go"></div> vide.
+    -->
+    <ul class="dates" id="dates-list">
+      <li class="date" data-date="2026-10-04">
+        <div class="date__when"><span class="date__day"></span><span class="date__month"></span></div>
+        <div class="date__what">
+          <h3>Nom de la salle</h3>
+          <p>Paris, France</p>
+        </div>
+        <div class="date__go"><a class="btn btn--small" href="#" target="_blank" rel="noopener">Billetterie</a></div>
+      </li>
+
+      <li class="date" data-date="2026-11-15">
+        <div class="date__when"><span class="date__day"></span><span class="date__month"></span></div>
+        <div class="date__what">
+          <h3>Festival d'automne</h3>
+          <p>Lyon, France</p>
+        </div>
+        <div class="date__go"><a class="btn btn--small" href="#" target="_blank" rel="noopener">Billetterie</a></div>
+      </li>
+
+      <li class="date" data-date="2026-12-06">
+        <div class="date__when"><span class="date__day"></span><span class="date__month"></span></div>
+        <div class="date__what">
+          <h3>Le Club</h3>
+          <p>Bruxelles, Belgique</p>
+        </div>
+        <div class="date__go"><a class="btn btn--small" href="#" target="_blank" rel="noopener">Billetterie</a></div>
+      </li>
+
+      <li class="date" data-date="2026-03-21">
+        <div class="date__when"><span class="date__day"></span><span class="date__month"></span></div>
+        <div class="date__what">
+          <h3>Salle des fêtes</h3>
+          <p>Bordeaux, France</p>
+        </div>
+        <div class="date__go"></div>
+      </li>
+
+      <li class="date" data-date="2025-11-09">
+        <div class="date__when"><span class="date__day"></span><span class="date__month"></span></div>
+        <div class="date__what">
+          <h3>Première partie — Artiste X</h3>
+          <p>Nantes, France</p>
+        </div>
+        <div class="date__go"></div>
+      </li>
+    </ul>
+
+    <p class="dates__empty" id="dates-empty" hidden>Aucune date dans cette catégorie pour le moment.</p>
+  </div>
+</section>
+
+<!-- ===================== PHOTOS ===================== -->
+<section class="section section--alt" id="photos">
+  <div class="wrap">
+    <header class="section__head reveal">
+      <p class="section__label">04 — Photos</p>
+      <h2 class="section__title">Galerie</h2>
+    </header>
+
+    <!--
+      POUR AJOUTER UNE PHOTO : mets l'image dans assets/img/, duplique un bouton,
+      change le src ET le texte alt (important pour Google et les lecteurs d'écran).
+    -->
+    <div class="gallery" id="gallery">
+      <button class="gallery__item reveal" type="button"><img src="assets/img/photo-1.svg" alt="Micka en concert, lumière rasante"></button>
+      <button class="gallery__item reveal" type="button"><img src="assets/img/photo-2.svg" alt="Portrait studio en noir et blanc"></button>
+      <button class="gallery__item reveal" type="button"><img src="assets/img/photo-3.svg" alt="Guitare posée sur un ampli en coulisses"></button>
+      <button class="gallery__item reveal" type="button"><img src="assets/img/photo-4.svg" alt="Vue de la scène depuis le public"></button>
+      <button class="gallery__item reveal" type="button"><img src="assets/img/photo-5.svg" alt="Session d'enregistrement en studio"></button>
+      <button class="gallery__item reveal" type="button"><img src="assets/img/photo-6.svg" alt="Balance avant le concert"></button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <header class="section__head reveal">
+      <p class="section__label">05 — Contact</p>
+      <h2 class="section__title">Parlons-en</h2>
+    </header>
+
+    <div class="contact">
+      <div class="contact__info reveal">
+        <h3>Booking &amp; production</h3>
+        <!-- A REMPLACER : tes coordonnées -->
+        <p><a href="mailto:contact@micka.fr">contact@micka.fr</a></p>
+        <p><a href="tel:+33600000000">+33 6 00 00 00 00</a></p>
+
+        <h3>Réseaux</h3>
+        <!-- A REMPLACER : tes liens. Supprime les lignes inutiles. -->
+        <ul class="socials">
+          <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="#" target="_blank" rel="noopener">YouTube</a></li>
+          <li><a href="#" target="_blank" rel="noopener">Spotify</a></li>
+          <li><a href="#" target="_blank" rel="noopener">Bandcamp</a></li>
+          <li><a href="#" target="_blank" rel="noopener">SoundCloud</a></li>
+        </ul>
+      </div>
+
+      <!--
+        FORMULAIRE : par défaut il ouvre le logiciel mail du visiteur (aucun serveur requis).
+        Pour recevoir les messages directement dans ta boîte mail, crée un compte gratuit
+        sur formspree.io, puis remplace les deux attributs action/method ci-dessous par :
+            action="https://formspree.io/f/TON_ID" method="POST"
+        et supprime les attributs data-mailto et enctype.
+      -->
+      <form class="contact__form reveal" id="contact-form"
+            data-mailto="contact@micka.fr"
+            action="mailto:contact@micka.fr" method="post" enctype="text/plain">
+        <div class="field">
+          <label for="f-name">Nom</label>
+          <input id="f-name" name="nom" type="text" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="f-email">E-mail</label>
+          <input id="f-email" name="email" type="email" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="f-subject">Sujet</label>
+          <input id="f-subject" name="sujet" type="text" required>
+        </div>
+        <div class="field">
+          <label for="f-msg">Message</label>
+          <textarea id="f-msg" name="message" rows="6" required></textarea>
+        </div>
+        <button class="btn btn--primary btn--full" type="submit">Envoyer</button>
+        <p class="form__note" id="form-note" role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <p class="footer__logo">MICKA</p>
+    <p class="footer__copy">© <span id="year"></span> Micka. Tous droits réservés.</p>
+    <a class="footer__top" href="#accueil">Haut de page ↑</a>
+  </div>
+</footer>
+
+<!-- Visionneuse photo -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo en grand" hidden>
+  <button class="lightbox__close" id="lb-close" aria-label="Fermer">&times;</button>
+  <button class="lightbox__nav lightbox__nav--prev" id="lb-prev" aria-label="Photo précédente">&#8249;</button>
+  <img class="lightbox__img" id="lb-img" src="" alt="">
+  <button class="lightbox__nav lightbox__nav--next" id="lb-next" aria-label="Photo suivante">&#8250;</button>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
