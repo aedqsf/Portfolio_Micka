@@ -1,6 +1,6 @@
-# Portfolio — Micka
+# Portfolio — Mickaël Solomin
 
-Site vitrine pour ma carrière de musicien : parcours, vidéos, concerts, photos et contact.
+Site vitrine, saxophoniste interprète.
 
 Site statique en **HTML / CSS / JavaScript**, sans framework et sans étape de compilation.
 Pas de Node, pas de `npm install` : on ouvre le fichier, on modifie, c'est en ligne.
@@ -18,11 +18,41 @@ Après chaque modification, enregistre le fichier et recharge la page dans le na
 
 ---
 
+## État actuel du site
+
+**En ligne :** page d'accueil (nom + « saxophoniste interprète ») et section contact.
+
+**En attente**, faute de contenu : parcours, vidéos, concerts, photos.
+
+Ces quatre sections sont déjà écrites et fonctionnelles dans `index.html`, mais
+volontairement éteintes : rien ne s'affiche et rien ne se charge tant qu'elles le sont.
+Elles t'attendent, il n'y a plus qu'à les remplir.
+
+### Rallumer une section
+
+Dans `index.html`, chaque section en attente est encadrée par deux lignes :
+
+```html
+<template data-section="concerts">
+  ... toute la section ...
+</template>
+```
+
+Pour la rallumer :
+
+1. supprime la ligne `<template data-section="...">`
+2. supprime la ligne `</template>` correspondante
+3. remplis le contenu (les commentaires t'indiquent quoi mettre et où)
+4. rajoute son lien dans le menu — le bloc de navigation en haut du fichier te donne
+   la ligne exacte à copier
+
+---
+
 ## Où modifier quoi
 
 | Ce que tu veux changer | Fichier | Repère |
 |---|---|---|
-| Textes, dates, vidéos, liens | `index.html` | commentaires `A REMPLACER` / `POUR AJOUTER` |
+| Textes, dates, vidéos, liens | `index.html` | commentaires `A REMPLIR` / `POUR AJOUTER` |
 | Couleurs et polices | `assets/css/style.css` | tout en haut, bloc `:root` |
 | Photos | `assets/img/` | remplace les fichiers |
 | Comportements (filtres, galerie…) | `assets/js/main.js` | sections numérotées 1 à 7 |
@@ -39,28 +69,31 @@ Tout en haut de `assets/css/style.css` :
 
 Change `--accent` et toute l'ambiance du site suit.
 
-### Mettre tes vraies photos
+### Mettre une photo de fond sur l'accueil
 
-1. Dépose tes images dans `assets/img/` (format `.jpg`, largeur ~1600 px, compressées).
-2. Dans `index.html`, remplace les `src="assets/img/xxx.svg"` par le nom de ton fichier.
-3. Mets à jour le texte `alt="..."` : c'est ce que lisent Google et les lecteurs d'écran.
+Pour l'instant, l'accueil affiche un dégradé sombre (`assets/img/hero.svg`) : c'est un fond
+neutre, pas une image manquante, la page a l'air finie telle quelle.
 
-Les fichiers `.svg` fournis sont des images de remplacement : ils évitent que le site
-paraisse cassé tant que tes vraies photos ne sont pas là.
+Pour mettre ta photo à la place :
+
+1. dépose ton image dans `assets/img/` (format `.jpg`, largeur ~1920 px, compressée)
+2. dans `index.html`, remplace `src="assets/img/hero.svg"` par le nom de ton fichier
+
+Le texte reste lisible : un voile sombre est appliqué automatiquement par-dessus l'image.
 
 ### Ajouter une vidéo
 
-Dans la section `VIDÉOS` de `index.html`, duplique un bloc `<article>` et remplace
-l'identifiant dans `data-yt="..."`.
+Section `VIDÉOS` de `index.html` (à rallumer d'abord). Duplique un bloc `<article>` et
+remplace l'identifiant dans `data-yt="..."`.
 
-L'identifiant se trouve dans l'URL YouTube : `youtube.com/watch?v=**dQw4w9WgXcQ**`
+L'identifiant se trouve dans l'URL YouTube : `youtube.com/watch?v=`**`dQw4w9WgXcQ`**
 
 La miniature s'affiche automatiquement. La vidéo ne se charge qu'au clic du visiteur :
 le site reste rapide et YouTube ne dépose aucun cookie avant.
 
 ### Ajouter une date de concert
 
-Dans la section `CONCERTS` de `index.html`, duplique un `<li class="date">` :
+Section `CONCERTS` de `index.html` (à rallumer d'abord). Duplique un `<li class="date">` :
 
 ```html
 <li class="date" data-date="2026-10-04">
@@ -74,23 +107,23 @@ Dans la section `CONCERTS` de `index.html`, duplique un `<li class="date">` :
 ```
 
 - `data-date` doit être au format **AAAA-MM-JJ**.
-- Le jour et le mois affichés sont remplis automatiquement, ne les écris pas à la main.
+- Le jour et le mois affichés se remplissent automatiquement : ne les écris pas à la main.
 - Le site classe tout seul la date dans « À venir » ou « Passés » selon la date du jour,
   et trie l'ensemble. Tu n'as jamais à réorganiser la liste.
 - Sans billetterie, laisse `<div class="date__go"></div>` vide.
 
-### Recevoir les messages du formulaire par e-mail
+### Recevoir les messages du formulaire dans ta boîte Gmail
 
 Par défaut, le formulaire ouvre le logiciel de messagerie du visiteur.
 Ça marche partout, mais tous les visiteurs n'ont pas de logiciel mail configuré.
 
-Pour recevoir les messages directement dans ta boîte, sans serveur :
+Pour recevoir les messages directement sur `mickasolo.sax@gmail.com`, sans serveur :
 
 1. Crée un compte gratuit sur [formspree.io](https://formspree.io) et récupère ton identifiant de formulaire.
 2. Dans `index.html`, sur la balise `<form id="contact-form">`, remplace :
    ```html
-   data-mailto="contact@micka.fr"
-   action="mailto:contact@micka.fr" method="post" enctype="text/plain"
+   data-mailto="mickasolo.sax@gmail.com"
+   action="mailto:mickasolo.sax@gmail.com" method="post" enctype="text/plain"
    ```
    par :
    ```html
@@ -101,14 +134,15 @@ Le JavaScript détecte le changement tout seul et envoie le message sans quitter
 
 ---
 
-## Mettre à jour le site en ligne
+## Mettre le site en ligne
 
-Le site est hébergé par GitHub Pages. Chaque `push` sur la branche `main` met le site à
-jour automatiquement (compte 1 à 2 minutes).
+Une seule fois, sur GitHub : **Settings → Pages → Source : Deploy from a branch → `main` / `(root)`**.
+
+Ensuite, chaque `push` sur `main` met le site à jour automatiquement (compte 1 à 2 minutes) :
 
 ```bash
 git add .
-git commit -m "Mise à jour des dates de concert"
+git commit -m "Ajout des dates de concert"
 git push
 ```
 
@@ -121,17 +155,17 @@ git push
   animations désactivées si le système du visiteur le demande.
 - Rapide : aucune bibliothèque externe, vidéos chargées seulement au clic.
 - Référencement : titre, description et aperçu de partage sur les réseaux sociaux.
-- Version imprimable propre (utile pour envoyer le CV en PDF depuis le navigateur).
+- Version imprimable propre.
 
 ## Structure
 
 ```
 .
-├── index.html              Toutes les pages/sections du site
+├── index.html              Tout le contenu du site
 ├── assets/
 │   ├── css/style.css       Styles (couleurs en haut du fichier)
 │   ├── js/main.js          Menu, filtres, galerie, formulaire
-│   └── img/                Images (à remplacer par les tiennes)
+│   └── img/                Images
 ├── .nojekyll               Nécessaire pour GitHub Pages
 └── README.md
 ```
