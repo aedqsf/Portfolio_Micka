@@ -332,6 +332,9 @@ h1, h2, h3, h4 {
 
 .cv__side { position: sticky; top: calc(var(--nav-h) + 2rem); }
 
+/* Variante sans portrait ni colonne "parcours" : un seul bloc de texte. */
+.cv--simple { display: block; max-width: 42rem; }
+
 .cv__portrait {
   margin-bottom: 2rem;
   border: 1px solid var(--line);
