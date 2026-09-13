@@ -307,7 +307,7 @@ h1, h2, h3, h4 {
 
 .section__label {
   margin: 0 0 .9rem;
-  font-size: .72rem;
+  font-size: .95rem;
   letter-spacing: .3em;
   text-transform: uppercase;
   color: var(--accent);
@@ -360,7 +360,7 @@ h1, h2, h3, h4 {
   color: var(--accent);
   margin-bottom: 1rem;
 }
-.cv__block p { margin: 0; color: var(--muted); font-size: .95rem; }
+.cv__block p { margin: 0; color: var(--text); opacity: .85; font-size: .95rem; }
 .cv__block--spaced p { margin-bottom: 1.4rem; }
 .cv__block--spaced p:last-child { margin-bottom: 0; }
 
