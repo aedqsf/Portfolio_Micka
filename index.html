@@ -133,6 +133,10 @@
       Les boutons d'écoute sont facultatifs : supprime ceux dont tu n'as pas besoin.
     -->
     <div class="slider reveal" id="slider" aria-roledescription="carrousel" aria-label="Discographie">
+      <div class="slider__stage">
+        <button class="slider__arrow slider__arrow--prev" id="slider-prev" type="button" aria-label="Sujet précédent">&#8249;</button>
+        <button class="slider__arrow slider__arrow--next" id="slider-next" type="button" aria-label="Sujet suivant">&#8250;</button>
+
       <div class="slider__viewport">
         <div class="slider__track" id="slider-track">
 
@@ -178,11 +182,10 @@
 
         </div>
       </div>
+      </div>
 
       <div class="slider__controls">
-        <button class="slider__arrow" id="slider-prev" type="button" aria-label="Sujet précédent">&#8249;</button>
         <div class="slider__dots" id="slider-dots"></div>
-        <button class="slider__arrow" id="slider-next" type="button" aria-label="Sujet suivant">&#8250;</button>
       </div>
     </div>
   </div>
