@@ -605,6 +605,24 @@ h1, h2, h3, h4 {
 .slide__desc { margin: 0 0 1.5rem; font-size: .95rem; color: var(--text); opacity: .85; }
 .slide__links { display: flex; flex-wrap: wrap; gap: .6rem; }
 
+/* Discographie : vidéos et photos dans la même section, plus rapprochées. */
+#discographie .section__head { margin-bottom: 2.5rem; }
+
+.media-block + .media-block {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding-top: clamp(2.5rem, 5vw, 3.5rem);
+  border-top: 1px solid var(--line);
+}
+.media-block__title {
+  margin: 0 0 1.75rem;
+  font-family: var(--font-body);
+  font-size: .85rem;
+  font-weight: 600;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
 .slider__stage {
   position: relative;
   padding-inline: 4.5rem;
@@ -614,7 +632,7 @@ h1, h2, h3, h4 {
 .slider__controls {
   display: flex;
   justify-content: center;
-  margin-top: 2.5rem;
+  margin-top: 1.75rem;
 }
 
 .slider__arrow {

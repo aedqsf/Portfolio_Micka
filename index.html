@@ -47,8 +47,7 @@
             <a href="#concerts" class="nav__cta">Concerts</a>
       -->
       <a href="#biographie" class="nav__cta">Biographie</a>
-      <a href="#videos" class="nav__cta">Vidéos</a>
-      <a href="#photos" class="nav__cta">Photos</a>
+      <a href="#discographie" class="nav__cta">Discographie</a>
       <a href="#contact" class="nav__cta">Contact</a>
     </nav>
   </div>
@@ -114,13 +113,15 @@
 </section>
 
 
-<!-- ---------- VIDÉOS ---------- -->
-<section class="section section--alt" id="videos">
+<!-- ---------- DISCOGRAPHIE (vidéos + photos) ---------- -->
+<section class="section section--alt" id="discographie">
   <div class="wrap">
     <header class="section__head reveal">
-      <p class="section__label">Vidéos</p>
+      <p class="section__label">Discographie</p>
     </header>
 
+    <div class="media-block">
+      <h3 class="media-block__title reveal">Vidéos</h3>
     <!--
       CARROUSEL VIDÉOS : chaque <article class="slide"> est une vidéo. Les flèches, les points,
       le glissé du doigt et les touches ← → du clavier changent de vidéo tout seuls.
@@ -185,56 +186,10 @@
         <div class="slider__dots"></div>
       </div>
     </div>
-  </div>
-</section>
-
-
-<!-- ---------- CONCERTS ---------- -->
-<template data-section="concerts">
-<section class="section" id="concerts">
-  <div class="wrap">
-    <header class="section__head reveal">
-      <p class="section__label">Concerts</p>
-      <h2 class="section__title">Sur scène</h2>
-    </header>
-
-    <div class="dates__filters reveal">
-      <button class="chip is-active" data-filter="upcoming" aria-pressed="true">À venir</button>
-      <button class="chip" data-filter="past" aria-pressed="false">Passés</button>
     </div>
 
-    <!--
-      POUR AJOUTER UNE DATE : duplique le <li> ci-dessous.
-      data-date DOIT être au format AAAA-MM-JJ.
-      Le jour et le mois affichés se remplissent tout seuls : ne les écris pas à la main.
-      Le site classe la date dans « À venir » ou « Passés » selon la date du jour,
-      et trie l'ensemble. Tu n'auras jamais à réorganiser la liste.
-      Sans billetterie, laisse <div class="date__go"></div> vide.
-    -->
-    <ul class="dates" id="dates-list">
-      <li class="date" data-date="2026-01-01">
-        <div class="date__when"><span class="date__day"></span><span class="date__month"></span></div>
-        <div class="date__what">
-          <h3>Nom de la salle</h3>
-          <p>Ville, Pays</p>
-        </div>
-        <div class="date__go"><a class="btn btn--small" href="LIEN_BILLETTERIE" target="_blank" rel="noopener">Billetterie</a></div>
-      </li>
-    </ul>
-
-    <p class="dates__empty" id="dates-empty" hidden>Aucune date dans cette catégorie pour le moment.</p>
-  </div>
-</section>
-</template>
-
-
-<!-- ---------- PHOTOS ---------- -->
-<section class="section" id="photos">
-  <div class="wrap">
-    <header class="section__head reveal">
-      <p class="section__label">Photos</p>
-    </header>
-
+    <div class="media-block">
+      <h3 class="media-block__title reveal">Photos</h3>
     <!--
       CARROUSEL PHOTOS : chaque <article class="slide slide--photo"> est une photo.
       POUR AJOUTER UNE PHOTO : dépose l'image dans assets/img/ (de préférence réduite,
@@ -278,12 +233,52 @@
         <div class="slider__dots"></div>
       </div>
     </div>
+    </div>
   </div>
 </section>
 
 
+<!-- ---------- CONCERTS ---------- -->
+<template data-section="concerts">
+<section class="section" id="concerts">
+  <div class="wrap">
+    <header class="section__head reveal">
+      <p class="section__label">Concerts</p>
+      <h2 class="section__title">Sur scène</h2>
+    </header>
+
+    <div class="dates__filters reveal">
+      <button class="chip is-active" data-filter="upcoming" aria-pressed="true">À venir</button>
+      <button class="chip" data-filter="past" aria-pressed="false">Passés</button>
+    </div>
+
+    <!--
+      POUR AJOUTER UNE DATE : duplique le <li> ci-dessous.
+      data-date DOIT être au format AAAA-MM-JJ.
+      Le jour et le mois affichés se remplissent tout seuls : ne les écris pas à la main.
+      Le site classe la date dans « À venir » ou « Passés » selon la date du jour,
+      et trie l'ensemble. Tu n'auras jamais à réorganiser la liste.
+      Sans billetterie, laisse <div class="date__go"></div> vide.
+    -->
+    <ul class="dates" id="dates-list">
+      <li class="date" data-date="2026-01-01">
+        <div class="date__when"><span class="date__day"></span><span class="date__month"></span></div>
+        <div class="date__what">
+          <h3>Nom de la salle</h3>
+          <p>Ville, Pays</p>
+        </div>
+        <div class="date__go"><a class="btn btn--small" href="LIEN_BILLETTERIE" target="_blank" rel="noopener">Billetterie</a></div>
+      </li>
+    </ul>
+
+    <p class="dates__empty" id="dates-empty" hidden>Aucune date dans cette catégorie pour le moment.</p>
+  </div>
+</section>
+</template>
+
+
 <!-- ===================== CONTACT ===================== -->
-<section class="section section--alt" id="contact">
+<section class="section" id="contact">
   <div class="wrap">
     <header class="section__head section__head--center reveal">
       <h2 class="section__title">Me contacter</h2>
