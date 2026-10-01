@@ -44,12 +44,11 @@
         Quand une section en attente sera rallumée (voir plus bas),
         rajoute ici le lien correspondant, AVANT la ligne « Contact »,
         avec la même classe "nav__cta" pour garder le bouton encadré :
-            <a href="#videos" class="nav__cta">Vidéos</a>
             <a href="#concerts" class="nav__cta">Concerts</a>
-            <a href="#photos" class="nav__cta">Photos</a>
       -->
       <a href="#biographie" class="nav__cta">Biographie</a>
-      <a href="#discographie" class="nav__cta">Discographie</a>
+      <a href="#videos" class="nav__cta">Vidéos</a>
+      <a href="#photos" class="nav__cta">Photos</a>
       <a href="#contact" class="nav__cta">Contact</a>
     </nav>
   </div>
@@ -115,30 +114,29 @@
 </section>
 
 
-<!-- ---------- DISCOGRAPHIE ---------- -->
-<section class="section section--alt" id="discographie">
+<!-- ---------- VIDÉOS ---------- -->
+<section class="section section--alt" id="videos">
   <div class="wrap">
     <header class="section__head reveal">
-      <p class="section__label">Discographie</p>
+      <p class="section__label">Vidéos</p>
     </header>
 
     <!--
-      CARROUSEL : chaque <article class="slide"> est un « sujet ». Les flèches, les points,
-      le glissé du doigt et les touches ← → du clavier changent de sujet tout seuls.
+      CARROUSEL VIDÉOS : chaque <article class="slide"> est une vidéo. Les flèches, les points,
+      le glissé du doigt et les touches ← → du clavier changent de vidéo tout seuls.
 
-      POUR AJOUTER UN SUJET : duplique un <article class="slide"> et choisis son média :
-        - une VIDÉO YOUTUBE : <div class="video" data-yt="IDENTIFIANT"><button class="video__play" aria-label="Lire la vidéo"></button></div>
-          (l'identifiant est dans l'URL youtube.com/watch?v=XXXXXXXXXXX)
-        - une PHOTO : <img src="assets/img/ta-photo.jpg" alt="Description">
-      Les boutons d'écoute sont facultatifs : supprime ceux dont tu n'as pas besoin.
+      POUR AJOUTER UNE VIDÉO : duplique un <article class="slide"> et remplace l'identifiant
+      dans data-yt (dans l'URL youtube.com/watch?v=XXXXXXXXXXX, c'est XXXXXXXXXXX),
+      puis le titre, l'année et la description.
+      La vidéo ne se charge qu'au clic du visiteur : le site reste rapide, sans cookie avant.
     -->
-    <div class="slider reveal" id="slider" aria-roledescription="carrousel" aria-label="Discographie">
+    <div class="slider reveal" aria-roledescription="carrousel" aria-label="Vidéos">
       <div class="slider__stage">
-        <button class="slider__arrow slider__arrow--prev" id="slider-prev" type="button" aria-label="Sujet précédent">&#8249;</button>
-        <button class="slider__arrow slider__arrow--next" id="slider-next" type="button" aria-label="Sujet suivant">&#8250;</button>
+        <button class="slider__arrow slider__arrow--prev" type="button" aria-label="Précédent">&#8249;</button>
+        <button class="slider__arrow slider__arrow--next" type="button" aria-label="Suivant">&#8250;</button>
 
-      <div class="slider__viewport">
-        <div class="slider__track" id="slider-track">
+        <div class="slider__viewport">
+          <div class="slider__track">
 
           <article class="slide" aria-roledescription="diapositive">
             <div class="slide__media">
@@ -155,71 +153,40 @@
 
           <article class="slide" aria-roledescription="diapositive">
             <div class="slide__media">
-              <img src="assets/img/photo-1.svg" alt="Photo du projet Titre du deuxième projet">
+              <div class="video" data-yt="IDENTIFIANT_YOUTUBE">
+                <button class="video__play" aria-label="Lire la vidéo : Titre de la deuxième vidéo"></button>
+              </div>
             </div>
             <div class="slide__body">
-              <p class="slide__meta">2025 · Autoproduction</p>
-              <h3>Titre du deuxième projet</h3>
-              <p class="slide__desc">Une ou deux phrases pour présenter le projet, le répertoire et les musiciens qui t'accompagnent.</p>
-              <div class="slide__links">
-                <a class="btn btn--small" href="LIEN_SPOTIFY" target="_blank" rel="noopener">Spotify</a>
-              </div>
+              <p class="slide__meta">2025 · Contexte</p>
+              <h3>Titre de la deuxième vidéo</h3>
+              <p class="slide__desc">Une ou deux phrases pour présenter le programme, le répertoire et les musiciens.</p>
             </div>
           </article>
 
           <article class="slide" aria-roledescription="diapositive">
             <div class="slide__media">
               <div class="video" data-yt="IDENTIFIANT_YOUTUBE">
-                <button class="video__play" aria-label="Lire la vidéo : Titre du troisième projet"></button>
+                <button class="video__play" aria-label="Lire la vidéo : Titre de la troisième vidéo"></button>
               </div>
             </div>
             <div class="slide__body">
-              <p class="slide__meta">2024 · Concert</p>
-              <h3>Titre du troisième projet</h3>
-              <p class="slide__desc">Une ou deux phrases pour présenter le projet, le répertoire et les musiciens qui t'accompagnent.</p>
+              <p class="slide__meta">2024 · Contexte</p>
+              <h3>Titre de la troisième vidéo</h3>
+              <p class="slide__desc">Une ou deux phrases pour présenter le programme, le répertoire et les musiciens.</p>
             </div>
           </article>
 
+          </div>
         </div>
-      </div>
       </div>
 
       <div class="slider__controls">
-        <div class="slider__dots" id="slider-dots"></div>
+        <div class="slider__dots"></div>
       </div>
     </div>
   </div>
 </section>
-
-
-<!-- ---------- VIDÉOS ---------- -->
-<template data-section="videos">
-<section class="section section--alt" id="videos">
-  <div class="wrap">
-    <header class="section__head reveal">
-      <p class="section__label">Vidéos</p>
-      <h2 class="section__title">Captations &amp; clips</h2>
-    </header>
-
-    <!--
-      POUR AJOUTER UNE VIDÉO YOUTUBE :
-      1. Ouvre la vidéo. Dans l'URL youtube.com/watch?v=XXXXXXXXXXX, l'identifiant est XXXXXXXXXXX
-      2. Duplique le bloc <article>, colle l'identifiant dans data-yt et change le titre.
-      La miniature s'affiche toute seule. La vidéo ne se charge qu'au clic du visiteur :
-      le site reste rapide et YouTube ne dépose aucun cookie avant.
-    -->
-    <div class="videos" id="videos-grid">
-      <article class="video reveal" data-yt="IDENTIFIANT_YOUTUBE">
-        <button class="video__play" aria-label="Lire la vidéo : titre de la vidéo"></button>
-        <div class="video__meta">
-          <h3>Titre de la vidéo</h3>
-          <p>Contexte · Année</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-</template>
 
 
 <!-- ---------- CONCERTS ---------- -->
@@ -262,28 +229,61 @@
 
 
 <!-- ---------- PHOTOS ---------- -->
-<template data-section="photos">
-<section class="section section--alt" id="photos">
+<section class="section" id="photos">
   <div class="wrap">
     <header class="section__head reveal">
       <p class="section__label">Photos</p>
-      <h2 class="section__title">Galerie</h2>
     </header>
 
     <!--
-      POUR AJOUTER UNE PHOTO : dépose l'image dans assets/img/, duplique le bouton,
-      change le src ET le texte alt (c'est ce que lisent Google et les lecteurs d'écran).
+      CARROUSEL PHOTOS : chaque <article class="slide slide--photo"> est une photo.
+      POUR AJOUTER UNE PHOTO : dépose l'image dans assets/img/ (de préférence réduite,
+      moins de 500 Ko), duplique un <article>, change le src ET le texte alt, puis la légende
+      (ou supprime la ligne <p class="slide__caption"> si tu n'en veux pas).
     -->
-    <div class="gallery" id="gallery">
-      <button class="gallery__item reveal" type="button"><img src="assets/img/photo-1.svg" alt="Description de la photo"></button>
+    <div class="slider reveal" aria-roledescription="carrousel" aria-label="Photos">
+      <div class="slider__stage">
+        <button class="slider__arrow slider__arrow--prev" type="button" aria-label="Précédent">&#8249;</button>
+        <button class="slider__arrow slider__arrow--next" type="button" aria-label="Suivant">&#8250;</button>
+
+        <div class="slider__viewport">
+          <div class="slider__track">
+
+          <article class="slide slide--photo" aria-roledescription="diapositive">
+            <div class="slide__media">
+              <img src="assets/img/photo-1.svg" alt="Légende de la première photo">
+            </div>
+            <p class="slide__caption">Légende de la première photo</p>
+          </article>
+
+          <article class="slide slide--photo" aria-roledescription="diapositive">
+            <div class="slide__media">
+              <img src="assets/img/photo-2.svg" alt="Légende de la deuxième photo">
+            </div>
+            <p class="slide__caption">Légende de la deuxième photo</p>
+          </article>
+
+          <article class="slide slide--photo" aria-roledescription="diapositive">
+            <div class="slide__media">
+              <img src="assets/img/photo-3.svg" alt="Légende de la troisième photo">
+            </div>
+            <p class="slide__caption">Légende de la troisième photo</p>
+          </article>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="slider__controls">
+        <div class="slider__dots"></div>
+      </div>
     </div>
   </div>
 </section>
-</template>
 
 
 <!-- ===================== CONTACT ===================== -->
-<section class="section" id="contact">
+<section class="section section--alt" id="contact">
   <div class="wrap">
     <header class="section__head section__head--center reveal">
       <h2 class="section__title">Me contacter</h2>

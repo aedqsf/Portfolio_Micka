@@ -578,6 +578,22 @@ h1, h2, h3, h4 {
 .slide__media .video__play:hover { transform: none; }
 .slide__media .video iframe { border-radius: 0; }
 
+/* Variante photo : une seule image centrée, légende dessous. */
+.slide--photo {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: 1.25rem;
+}
+.slide--photo .slide__media { width: 100%; max-width: 860px; }
+.slide__caption {
+  margin: 0;
+  font-size: .8rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+}
+
 .slide__meta {
   margin: 0 0 .6rem;
   font-size: .78rem;

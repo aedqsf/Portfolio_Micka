@@ -125,21 +125,19 @@
   });
 
   /* ---------------------------------------------------------
-     5. Carrousel : flèches, points, glissé tactile, clavier
+     5. Carrousels (vidéos, photos) : flèches, points, glissé tactile, clavier
      --------------------------------------------------------- */
-  var slider = $('#slider');
-
-  if (slider) {
-    var track  = $('#slider-track');
+  $$('.slider').forEach(function (slider) {
+    var track  = $('.slider__track', slider);
     var slides = $$('.slide', track);
-    var dotsEl = $('#slider-dots');
+    var dotsEl = $('.slider__dots', slider);
     var cur    = 0;
 
     var dots = slides.map(function (s, i) {
       var d = document.createElement('button');
       d.type = 'button';
       d.className = 'slider__dot';
-      d.setAttribute('aria-label', 'Aller au sujet ' + (i + 1));
+      d.setAttribute('aria-label', 'Aller au n°' + (i + 1));
       d.addEventListener('click', function () { goTo(i); });
       dotsEl.appendChild(d);
       return d;
@@ -169,8 +167,8 @@
       });
     };
 
-    $('#slider-prev').addEventListener('click', function () { goTo(cur - 1); });
-    $('#slider-next').addEventListener('click', function () { goTo(cur + 1); });
+    $('.slider__arrow--prev', slider).addEventListener('click', function () { goTo(cur - 1); });
+    $('.slider__arrow--next', slider).addEventListener('click', function () { goTo(cur + 1); });
 
     slider.setAttribute('tabindex', '0');
     slider.addEventListener('keydown', function (e) {
@@ -189,7 +187,7 @@
     });
 
     goTo(0);
-  }
+  });
 
   /* ---------------------------------------------------------
      6. Concerts : dates formatées, triées et filtrées automatiquement
