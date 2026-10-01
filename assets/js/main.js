@@ -115,7 +115,7 @@
 
     btn.addEventListener('click', function () {
       var frame = document.createElement('iframe');
-      frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+      frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&enablejsapi=1';
       frame.title = btn.getAttribute('aria-label') || 'Vidéo YouTube';
       frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
       frame.allowFullscreen = true;
@@ -125,7 +125,74 @@
   });
 
   /* ---------------------------------------------------------
-     5. Concerts : dates formatées, triées et filtrées automatiquement
+     5. Carrousel : flèches, points, glissé tactile, clavier
+     --------------------------------------------------------- */
+  var slider = $('#slider');
+
+  if (slider) {
+    var track  = $('#slider-track');
+    var slides = $$('.slide', track);
+    var dotsEl = $('#slider-dots');
+    var cur    = 0;
+
+    var dots = slides.map(function (s, i) {
+      var d = document.createElement('button');
+      d.type = 'button';
+      d.className = 'slider__dot';
+      d.setAttribute('aria-label', 'Aller au sujet ' + (i + 1));
+      d.addEventListener('click', function () { goTo(i); });
+      dotsEl.appendChild(d);
+      return d;
+    });
+
+    // Met en pause une vidéo YouTube déjà lancée quand on quitte son sujet.
+    var pauseVideos = function () {
+      $$('iframe', track).forEach(function (f) {
+        try {
+          f.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'pauseVideo', args: '' }), '*');
+        } catch (e) {}
+      });
+    };
+
+    var goTo = function (i) {
+      if (i !== cur) pauseVideos();
+      cur = (i + slides.length) % slides.length;
+      track.style.transform = 'translateX(' + (-100 * cur) + '%)';
+      slides.forEach(function (s, k) {
+        var on = k === cur;
+        if (on) s.removeAttribute('inert'); else s.setAttribute('inert', '');
+        s.setAttribute('aria-hidden', String(!on));
+      });
+      dots.forEach(function (d, k) {
+        d.classList.toggle('is-active', k === cur);
+        if (k === cur) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
+      });
+    };
+
+    $('#slider-prev').addEventListener('click', function () { goTo(cur - 1); });
+    $('#slider-next').addEventListener('click', function () { goTo(cur + 1); });
+
+    slider.setAttribute('tabindex', '0');
+    slider.addEventListener('keydown', function (e) {
+      if (e.target !== slider) return;
+      if (e.key === 'ArrowLeft')  goTo(cur - 1);
+      if (e.key === 'ArrowRight') goTo(cur + 1);
+    });
+
+    var startX = null;
+    slider.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    slider.addEventListener('touchend', function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      startX = null;
+      if (Math.abs(dx) > 50) goTo(dx < 0 ? cur + 1 : cur - 1);
+    });
+
+    goTo(0);
+  }
+
+  /* ---------------------------------------------------------
+     6. Concerts : dates formatées, triées et filtrées automatiquement
      --------------------------------------------------------- */
   var datesList = $('#dates-list');
 
@@ -191,7 +258,7 @@
   }
 
   /* ---------------------------------------------------------
-     6. Visionneuse photo (lightbox)
+     7. Visionneuse photo (lightbox)
      --------------------------------------------------------- */
   var lightbox = $('#lightbox');
 
@@ -246,7 +313,7 @@
   }
 
   /* ---------------------------------------------------------
-     7. Formulaire de contact
+     8. Formulaire de contact
      - data-mailto présent  -> ouvre le logiciel mail du visiteur
      - action Formspree     -> envoi direct sans quitter la page
      --------------------------------------------------------- */

@@ -49,6 +49,7 @@
             <a href="#photos" class="nav__cta">Photos</a>
       -->
       <a href="#biographie" class="nav__cta">Biographie</a>
+      <a href="#discographie" class="nav__cta">Discographie</a>
       <a href="#contact" class="nav__cta">Contact</a>
     </nav>
   </div>
@@ -108,6 +109,84 @@
         <p>Son univers musical se développe autour du répertoire classique, de la création contemporaine et du jazz. Il participe à différents concours et projets artistiques, parmi lesquels l'Andorra SaxFest et SAXGO. Il s'est notamment produit en salle Molière avec l'ensemble de saxophones L'Artisanat Furieux du Conservatoire de Lyon, a participé à la création de <em>Sens</em> de Ruben Nauge au Musée des Beaux-Arts de Lyon, ainsi qu'à un concert avec l'Orchestre d'Harmonie du CNSMD de Lyon.</p>
         <p>Aujourd'hui, Mickaël développe son activité autour du concert et de la scène, avec l'ambition de proposer le saxophone dans des formats variés, du récital solo aux prestations de concertiste dans le cadre d'événements culturels et artistiques. Il souhaite faire découvrir la richesse et la diversité du saxophone à travers des programmes accessibles et exigeants, construits autour d'une identité artistique affirmée.</p>
         <p>Parallèlement à son activité de concertiste, il enseigne le saxophone à l'École de musique Saint-Barthélémy à Mulhouse.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ---------- DISCOGRAPHIE ---------- -->
+<section class="section section--alt" id="discographie">
+  <div class="wrap">
+    <header class="section__head reveal">
+      <p class="section__label">Discographie</p>
+    </header>
+
+    <!--
+      CARROUSEL : chaque <article class="slide"> est un « sujet ». Les flèches, les points,
+      le glissé du doigt et les touches ← → du clavier changent de sujet tout seuls.
+
+      POUR AJOUTER UN SUJET : duplique un <article class="slide"> et choisis son média :
+        - une VIDÉO YOUTUBE : <div class="video" data-yt="IDENTIFIANT"><button class="video__play" aria-label="Lire la vidéo"></button></div>
+          (l'identifiant est dans l'URL youtube.com/watch?v=XXXXXXXXXXX)
+        - une PHOTO : <img src="assets/img/ta-photo.jpg" alt="Description">
+      Les boutons d'écoute sont facultatifs : supprime ceux dont tu n'as pas besoin.
+    -->
+    <div class="slider reveal" id="slider" aria-roledescription="carrousel" aria-label="Discographie">
+      <div class="slider__viewport">
+        <div class="slider__track" id="slider-track">
+
+          <article class="slide" aria-roledescription="diapositive">
+            <div class="slide__media">
+              <div class="video" data-yt="IDENTIFIANT_YOUTUBE">
+                <button class="video__play" aria-label="Lire la vidéo : Titre du projet"></button>
+              </div>
+            </div>
+            <div class="slide__body">
+              <p class="slide__meta">2026 · Label</p>
+              <h3>Titre du projet</h3>
+              <p class="slide__desc">Une ou deux phrases pour présenter le projet, le répertoire et les musiciens qui t'accompagnent.</p>
+              <div class="slide__links">
+                <a class="btn btn--small" href="LIEN_SPOTIFY" target="_blank" rel="noopener">Spotify</a>
+                <a class="btn btn--small" href="LIEN_APPLE_MUSIC" target="_blank" rel="noopener">Apple Music</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide" aria-roledescription="diapositive">
+            <div class="slide__media">
+              <img src="assets/img/photo-1.svg" alt="Photo du projet Titre du deuxième projet">
+            </div>
+            <div class="slide__body">
+              <p class="slide__meta">2025 · Autoproduction</p>
+              <h3>Titre du deuxième projet</h3>
+              <p class="slide__desc">Une ou deux phrases pour présenter le projet, le répertoire et les musiciens qui t'accompagnent.</p>
+              <div class="slide__links">
+                <a class="btn btn--small" href="LIEN_SPOTIFY" target="_blank" rel="noopener">Spotify</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide" aria-roledescription="diapositive">
+            <div class="slide__media">
+              <div class="video" data-yt="IDENTIFIANT_YOUTUBE">
+                <button class="video__play" aria-label="Lire la vidéo : Titre du troisième projet"></button>
+              </div>
+            </div>
+            <div class="slide__body">
+              <p class="slide__meta">2024 · Concert</p>
+              <h3>Titre du troisième projet</h3>
+              <p class="slide__desc">Une ou deux phrases pour présenter le projet, le répertoire et les musiciens qui t'accompagnent.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <div class="slider__controls">
+        <button class="slider__arrow" id="slider-prev" type="button" aria-label="Sujet précédent">&#8249;</button>
+        <div class="slider__dots" id="slider-dots"></div>
+        <button class="slider__arrow" id="slider-next" type="button" aria-label="Sujet suivant">&#8250;</button>
       </div>
     </div>
   </div>
