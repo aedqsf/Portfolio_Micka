@@ -144,6 +144,14 @@
      La miniature s'affiche tout de suite ; la vraie vidéo (et les
      cookies YouTube) ne se chargent qu'au clic du visiteur.
      --------------------------------------------------------- */
+  // "1:23:45", "23:45" ou "345" -> secondes (0 si vide ou invalide)
+  var toSeconds = function (v) {
+    if (!v) return 0;
+    var parts = String(v).split(':').map(Number);
+    if (parts.some(isNaN)) return 0;
+    return parts.reduce(function (acc, n) { return acc * 60 + n; }, 0);
+  };
+
   $$('.video[data-yt]').forEach(function (card) {
     var id = card.getAttribute('data-yt');
     if (!id) return;
@@ -166,7 +174,12 @@
 
     btn.addEventListener('click', function () {
       var frame = document.createElement('iframe');
-      frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&enablejsapi=1';
+      var src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&enablejsapi=1';
+      var start = toSeconds(card.getAttribute('data-start'));
+      var end   = toSeconds(card.getAttribute('data-end'));
+      if (start) src += '&start=' + start;
+      if (end)   src += '&end=' + end;
+      frame.src = src;
       frame.title = btn.getAttribute('aria-label') || tr('Vidéo YouTube', 'YouTube video');
       frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
       frame.allowFullscreen = true;
