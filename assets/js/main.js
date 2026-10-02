@@ -15,6 +15,52 @@
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   /* ---------------------------------------------------------
+     1b. Langue FR / ENG
+     Le français est écrit dans la page ; la version anglaise est
+     juste à côté : data-en="..." pour un texte, data-en-alt="...",
+     data-en-aria-label="...", etc. pour un attribut.
+     --------------------------------------------------------- */
+  var lang = 'fr';
+  var tr = function (fr, en) { return lang === 'en' ? en : fr; };
+  var langHooks = [];
+
+  var applyLang = function (l, save) {
+    lang = l === 'en' ? 'en' : 'fr';
+    document.documentElement.lang = lang;
+
+    $$('[data-en]').forEach(function (el) {
+      if (el._fr === undefined) el._fr = el.innerHTML;
+      el.innerHTML = lang === 'en' ? el.getAttribute('data-en') : el._fr;
+    });
+
+    $$('*').forEach(function (el) {
+      Array.prototype.slice.call(el.attributes).forEach(function (a) {
+        if (a.name.indexOf('data-en-') !== 0) return;
+        var target = a.name.slice(8);
+        el._frAttr = el._frAttr || {};
+        if (!(target in el._frAttr)) el._frAttr[target] = el.getAttribute(target);
+        el.setAttribute(target, lang === 'en' ? a.value : el._frAttr[target]);
+      });
+    });
+
+    $$('.lang__btn').forEach(function (b) {
+      var on = b.getAttribute('data-lang') === lang;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-pressed', String(on));
+    });
+
+    langHooks.forEach(function (fn) { fn(); });
+
+    if (save) {
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+    }
+  };
+
+  $$('.lang__btn').forEach(function (b) {
+    b.addEventListener('click', function () { applyLang(b.getAttribute('data-lang'), true); });
+  });
+
+  /* ---------------------------------------------------------
      2. Navigation : fond au scroll, menu mobile, lien actif
      --------------------------------------------------------- */
   var nav    = $('#nav');
@@ -32,7 +78,7 @@
     menu.classList.remove('is-open');
     burger.classList.remove('is-open');
     burger.setAttribute('aria-expanded', 'false');
-    burger.setAttribute('aria-label', 'Ouvrir le menu');
+    burger.setAttribute('aria-label', tr('Ouvrir le menu', 'Open menu'));
     document.body.classList.remove('menu-open');
   };
 
@@ -41,8 +87,13 @@
       var open = menu.classList.toggle('is-open');
       burger.classList.toggle('is-open', open);
       burger.setAttribute('aria-expanded', String(open));
-      burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+      burger.setAttribute('aria-label', open ? tr('Fermer le menu', 'Close menu') : tr('Ouvrir le menu', 'Open menu'));
       document.body.classList.toggle('menu-open', open);
+    });
+
+    langHooks.push(function () {
+      burger.setAttribute('aria-label', menu.classList.contains('is-open')
+        ? tr('Fermer le menu', 'Close menu') : tr('Ouvrir le menu', 'Open menu'));
     });
 
     // Refermer après un clic sur un lien
@@ -116,7 +167,7 @@
     btn.addEventListener('click', function () {
       var frame = document.createElement('iframe');
       frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&enablejsapi=1';
-      frame.title = btn.getAttribute('aria-label') || 'Vidéo YouTube';
+      frame.title = btn.getAttribute('aria-label') || tr('Vidéo YouTube', 'YouTube video');
       frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
       frame.allowFullscreen = true;
       frame.loading = 'lazy';
@@ -137,7 +188,7 @@
       var d = document.createElement('button');
       d.type = 'button';
       d.className = 'slider__dot';
-      d.setAttribute('aria-label', 'Aller au n°' + (i + 1));
+      d.setAttribute('aria-label', tr('Aller au n°', 'Go to no. ') + (i + 1));
       d.addEventListener('click', function () { goTo(i); });
       dotsEl.appendChild(d);
       return d;
@@ -166,6 +217,10 @@
         if (k === cur) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
       });
     };
+
+    langHooks.push(function () {
+      dots.forEach(function (d, i) { d.setAttribute('aria-label', tr('Aller au n°', 'Go to no. ') + (i + 1)); });
+    });
 
     $('.slider__arrow--prev', slider).addEventListener('click', function () { goTo(cur - 1); });
     $('.slider__arrow--next', slider).addEventListener('click', function () { goTo(cur + 1); });
@@ -227,6 +282,15 @@
         return a.past ? b.date - a.date : a.date - b.date;
       })
       .forEach(function (item) { datesList.appendChild(item.el); });
+
+    langHooks.push(function () {
+      var fmt = new Intl.DateTimeFormat(lang === 'en' ? 'en-GB' : 'fr-FR', { month: 'short' });
+      items.forEach(function (item) {
+        if (isNaN(item.date.getTime())) return;
+        var m = $('.date__month', item.el);
+        if (m) m.textContent = fmt.format(item.date).replace('.', '') + ' ' + item.date.getFullYear();
+      });
+    });
 
     var emptyMsg = $('#dates-empty');
 
@@ -327,7 +391,7 @@
       // --- Cas 1 : Formspree (ou autre service HTTP) ---
       if (/^https?:/i.test(action)) {
         e.preventDefault();
-        say('Envoi en cours…');
+        say(tr('Envoi en cours…', 'Sending…'));
 
         fetch(action, {
           method: 'POST',
@@ -337,10 +401,10 @@
           .then(function (res) {
             if (!res.ok) throw new Error('Réponse ' + res.status);
             form.reset();
-            say('Message envoyé, merci ! Je reviens vers toi rapidement.');
+            say(tr('Message envoyé, merci ! Je reviens vers toi rapidement.', 'Message sent, thank you! I will get back to you shortly.'));
           })
           .catch(function () {
-            say("L'envoi a échoué. Écris-moi directement par e-mail.");
+            say(tr("L'envoi a échoué. Écris-moi directement par e-mail.", 'Sending failed. Please email me directly.'));
           });
         return;
       }
@@ -353,15 +417,19 @@
 
       var data    = new FormData(form);
       var subject = '[Site] ' + (data.get('sujet') || 'Message');
-      var body    = 'Nom : '    + (data.get('nom')   || '') + '\n' +
-                    'E-mail : ' + (data.get('email') || '') + '\n\n' +
+      var body    = tr('Nom : ', 'Name: ') + (data.get('nom')   || '') + '\n' +
+                    tr('E-mail : ', 'Email: ') + (data.get('email') || '') + '\n\n' +
                     (data.get('message') || '');
 
       window.location.href = 'mailto:' + to +
         '?subject=' + encodeURIComponent(subject) +
         '&body='    + encodeURIComponent(body);
 
-      say('Ton logiciel de messagerie va s’ouvrir avec le message pré-rempli.');
+      say(tr('Ton logiciel de messagerie va s’ouvrir avec le message pré-rempli.', 'Your email app will open with the message pre-filled.'));
     });
   }
+
+  var savedLang = null;
+  try { savedLang = localStorage.getItem('lang'); } catch (e) {}
+  applyLang(savedLang || ((navigator.language || 'fr').toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en'));
 })();
